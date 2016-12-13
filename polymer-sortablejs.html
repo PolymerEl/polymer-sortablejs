@@ -107,13 +107,15 @@
         },
 
         onAdd: function(e) {
-          if (template && !_this.delegateAdd) {
+          if (template) {
             var froms = e.from.querySelectorAll("template[is='dom-repeat']");
             var from = froms[froms.length-1];
             // var item = from.items[e.oldIndex];
             var model = from.modelForElement(e.item);
-            template.splice("items", e.newIndex, 0, item);
-             e.model = model;
+            if(!_this.delegateAdd) {
+              template.splice("items", e.newIndex, 0, item);
+            }
+            e.model = model;
           }
           _this.fire("sortable-add", e);
         },
@@ -123,8 +125,10 @@
           if (e.target.group.pull === 'clone') {
             return false;
           }
-          if (template && !_this.delegateRemove) {
-            var item = template.splice("items", e.oldIndex, 1)[0];
+          if (template && ) {
+            if (!_this.delegateRemove) {
+              var item = template.splice("items", e.oldIndex, 1)[0];
+            }
             e.model = {item: item};
             // template.splice("items", e.oldIndex, 1)[0];
           }
