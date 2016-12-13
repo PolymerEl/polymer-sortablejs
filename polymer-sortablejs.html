@@ -110,14 +110,15 @@
           if (template && !_this.delegateAdd) {
             var froms = e.from.querySelectorAll("template[is='dom-repeat']");
             var from = froms[froms.length-1];
-            var item = from.items[e.oldIndex];
+            // var item = from.items[e.oldIndex];
+            var model = from.modelForElement(e.item);
             template.splice("items", e.newIndex, 0, item);
              e.model = model;
           }
           _this.fire("sortable-add", e);
         },
 
-        onRemove: function(e) {
+       onRemove: function(e) {
           // Donot remove if group.pull is clone
           if (e.target.group.pull === 'clone') {
             return false;
