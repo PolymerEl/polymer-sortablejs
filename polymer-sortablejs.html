@@ -113,7 +113,7 @@
             // var item = from.items[e.oldIndex];
             var model = from.modelForElement(e.item);
             if(!_this.delegateAdd) {
-              template.splice("items", e.newIndex, 0, item);
+              template.splice("items", e.newIndex, 0, e.item);
             }
             e.model = model;
           }
@@ -125,7 +125,7 @@
           if (e.target.group.pull === 'clone') {
             return false;
           }
-          if (template && ) {
+          if (template) {
             if (!_this.delegateRemove) {
               var item = template.splice("items", e.oldIndex, 1)[0];
             }
