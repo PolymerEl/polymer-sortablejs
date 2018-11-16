@@ -1,0 +1,84 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <title>paper-item demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../iron-icon/iron-icon.html">
+    <link rel="import" href="../../iron-icons/iron-icons.html">
+    <link rel="import" href="../../iron-icons/communication-icons.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="../../paper-item/paper-icon-item.html">
+    <link rel="import" href="../../paper-item/paper-item.html">
+    <link rel="import" href="../../paper-item/paper-item-body.html">
+    <link rel="import" href="../../paper-styles/color.html">
+    <link rel="import" href="../polymer-sortablejs.html">
+    <custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles">
+        div[role="listbox"] {
+            border: 1px solid #e5e5e5;
+        }
+
+        </style>
+    </custom-style>
+</head>
+
+<body unresolved>
+    <div class="vertical-section-container centered">
+        <h3>Paper-items are simple list elements, ideally used in a paper-listbox or
+    an element with <i>role="listbox"</i></h3>
+        <demo-snippet>
+            <template preserve-content>
+                <dom-bind id="app">
+                    <template>
+                        <h4>Sortable without polymer-sortable element. </h4>
+                        <div id="firstContainer" role="listbox">
+                            <paper-item>Inbox</paper-item>
+                            <paper-item>Starred</paper-item>
+                            <paper-item>Sent mail</paper-item>
+                            <paper-item>My items</paper-item>
+                        </div>
+                        <h4>Sortable with polymer-sortable element </h4>
+                        <sortable-js>
+                            <paper-item>Inbox</paper-item>
+                            <paper-item>Starred</paper-item>
+                            <paper-item>Sent mail</paper-item>
+                            <paper-item>My items</paper-item>
+                        </sortable-js>
+                        <h4>Sortable with polymer-sortable element and dom-repeat</h4>
+                        <sortable-js>
+                          <template is="dom-repeat" items="[[items]]">
+                            <paper-item>[[item]]</paper-item>
+                          </template>
+                        </sortable-js>
+
+                    </template>
+                </dom-bind>
+            </template>
+        </demo-snippet>
+    </div>
+</body>
+<script>
+window.addEventListener('WebComponentsReady', function() {
+    app = document.querySelector('#app');
+    Sortable.create(app.$.firstContainer);
+    app.items = ['Inbox','Starred','Sent mail','My items'];
+});
+
+</script>
+
+</html>
