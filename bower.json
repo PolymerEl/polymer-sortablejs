@@ -37,4 +37,5 @@
         "paper-input": "PolymerElements/paper-input#^2.0.0",
         "paper-icon": "PolymerElements/paper-icon#^2.0.0",
         "paper-icons": "PolymerElements/paper-icons#^2.0.0"
+    }
 }
